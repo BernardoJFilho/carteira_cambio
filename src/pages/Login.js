@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { submitLoginForm, walletInformation } from '../redux/actions';
+import { submitLoginForm } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -9,11 +9,6 @@ class Login extends React.Component {
     valorPassword: '',
     buttonDisable: true,
   };
-
-  async componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(walletInformation());
-  }
 
   stateButton = ({ target }) => {
     const { email } = this.state;

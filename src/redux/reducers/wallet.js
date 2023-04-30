@@ -1,4 +1,4 @@
-import { INFORMATION_WALLET } from '../actions';
+import { INFORMATION_WALLET, VALUES_WALLET } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -15,6 +15,11 @@ const walletReducer = (state = INITIAL_STATE, action) => {
     return ({
       ...state,
       currencies: action.payload,
+    });
+  case VALUES_WALLET:
+    return ({
+      ...state,
+      expenses: state.expenses.concat(action.payload),
     });
 
   default:
