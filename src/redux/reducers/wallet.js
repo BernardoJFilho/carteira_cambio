@@ -1,4 +1,4 @@
-import { INFORMATION_WALLET, VALUES_WALLET } from '../actions';
+import { DELETE_ITEM, INFORMATION_WALLET, VALUES_WALLET } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 const INITIAL_STATE = {
@@ -10,6 +10,7 @@ const INITIAL_STATE = {
 
 const walletReducer = (state = INITIAL_STATE, action) => {
   const { type } = action;
+  const { expenses } = state;
   switch (type) {
   case INFORMATION_WALLET:
     return ({
@@ -19,7 +20,12 @@ const walletReducer = (state = INITIAL_STATE, action) => {
   case VALUES_WALLET:
     return ({
       ...state,
-      expenses: state.expenses.concat(action.payload),
+      expenses: expenses.concat(action.payload),
+    });
+  case DELETE_ITEM:
+    return ({
+      ...state,
+      expenses: [...expenses.filter((element) => element !== action.payload)],
     });
 
   default:

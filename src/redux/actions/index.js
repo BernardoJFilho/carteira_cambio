@@ -4,6 +4,7 @@ import getApi from '../api/api';
 const LOGIN_FORM_SUBMIT = 'LOGIN_FORM_SUBMIT';
 const INFORMATION_WALLET = 'INFORMATION_WALLET';
 const VALUES_WALLET = 'VALUES_WALLET';
+const DELETE_ITEM = 'DELETE_ITEM';
 
 const submitLoginForm = (loginProfile) => ({
   type: LOGIN_FORM_SUBMIT,
@@ -29,6 +30,14 @@ const valuesWallet = (allValues) => async (dispatch) => {
   });
 };
 
+const deleteItem = (item) => async (dispatch) => {
+  console.log(item);
+  dispatch({
+    type: DELETE_ITEM,
+    payload: item,
+  });
+};
+
 export {
   LOGIN_FORM_SUBMIT,
   submitLoginForm,
@@ -36,4 +45,6 @@ export {
   walletInformation,
   VALUES_WALLET,
   valuesWallet,
+  deleteItem,
+  DELETE_ITEM,
 };
