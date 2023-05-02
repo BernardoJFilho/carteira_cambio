@@ -31,7 +31,6 @@ const valuesWallet = (allValues) => async (dispatch) => {
 };
 
 const deleteItem = (item) => async (dispatch) => {
-  console.log(item);
   dispatch({
     type: DELETE_ITEM,
     payload: item,
