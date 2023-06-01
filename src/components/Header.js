@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Center, Flex, Title } from '@mantine/core';
 
 class Header extends Component {
   calcularValor = () => {
@@ -20,11 +21,15 @@ class Header extends Component {
   render() {
     const { email } = this.props;
     return (
-      <div>
-        <h1 data-testid="email-field">{ email }</h1>
-        <p data-testid="total-field">{ this.calcularValor() }</p>
-        <p data-testid="header-currency-field">BRL</p>
-      </div>
+      <Center>
+        <Flex justify="space-between" w="100%">
+          <Title data-testid="email-field">{ email }</Title>
+          <Flex>
+            <Title data-testid="total-field">{ this.calcularValor() }</Title>
+            <Title data-testid="header-currency-field">BRL</Title>
+          </Flex>
+        </Flex>
+      </Center>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { PasswordInput, Stack, TextInput, Button } from '@mantine/core';
 import { submitLoginForm } from '../redux/actions';
 
 class Login extends React.Component {
@@ -8,6 +9,7 @@ class Login extends React.Component {
     email: '',
     valorPassword: '',
     buttonDisable: true,
+    toggle: false,
   };
 
   stateButton = ({ target }) => {
@@ -34,33 +36,44 @@ class Login extends React.Component {
   };
 
   render() {
-    const { email, buttonDisable, valorPassword } = this.state;
+    const { email, buttonDisable, valorPassword, toggle } = this.state;
     return (
-      <>
-        <label>
-          <input
-            name="email"
-            value={ email }
-            type="text"
-            data-testid="email-input"
-            placeholder="Email"
-            onChange={ this.stateButton }
-          />
-        </label>
+      <Stack
+        justify="center"
+        spacing="0"
+        h={ 800 }
+        maw={ 400 }
+        mx="auto"
+        color="#1F2041"
+      >
+        <TextInput
+          name="email"
+          label="Email"
+          value={ email }
+          type="text"
+          data-testid="email-input"
+          placeholder="@email.com"
+          onChange={ this.stateButton }
+        />
         <br />
-        <label>
-          <input
-            name="valorPassword"
-            value={ valorPassword }
-            type="password"
-            data-testid="password-input"
-            placeholder="Senha"
-            onChange={ this.stateButton }
-          />
-        </label>
+        <PasswordInput
+          label="Password"
+          name="valorPassword"
+          placeholder="password"
+          value={ valorPassword }
+          data-testid="password-input"
+          onChange={ this.stateButton }
+          onVisibilityChange={ toggle }
+        />
         <br />
-        <button disabled={ buttonDisable } onClick={ this.buttonClick }>Entrar</button>
-      </>
+        <Button
+          variant="light"
+          disabled={ buttonDisable }
+          onClick={ this.buttonClick }
+        >
+          Entrar
+        </Button>
+      </Stack>
     );
   }
 }

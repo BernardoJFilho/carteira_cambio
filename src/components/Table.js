@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Flex } from '@mantine/core';
 import { deleteItem } from '../redux/actions';
 
 class Table extends Component {
@@ -14,40 +15,33 @@ class Table extends Component {
     const { expenses } = this.props;
     return (
       <>
-        <th>
-          Descrição:
-        </th>
-        <br />
-        <th>
-          Tag:
-        </th>
-        <br />
-        <th>
-          Método de pagamento:
-        </th>
-        <br />
-        <th>
-          Valor:
-        </th>
-        <br />
-        <th>
-          Moeda:
-        </th>
-        <br />
-        <th>
-          Câmbio utilizado:
-        </th>
-        <br />
-        <th>
-          Valor convertido:
-        </th>
-        <br />
-        <th>
-          Moeda de conversão:
-        </th>
-        <br />
-        <th>Editar/Excluir</th>
-        <br />
+        <Flex direction="column">
+          <th>
+            Descrição:
+          </th>
+          <th>
+            Tag:
+          </th>
+          <th>
+            Método de pagamento:
+          </th>
+          <th>
+            Valor:
+          </th>
+          <th>
+            Moeda:
+          </th>
+          <th>
+            Câmbio utilizado:
+          </th>
+          <th>
+            Valor convertido:
+          </th>
+          <th>
+            Moeda de conversão:
+          </th>
+          <th>Editar/Excluir</th>
+        </Flex>
         <tbody>
           {expenses
             .map(({ id, description, tag, method, value, exchangeRates, currency }) => (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, Flex, Input, Select, Stack } from '@mantine/core';
 import { valuesWallet, walletInformation } from '../redux/actions';
 
 const initialState = {
@@ -24,10 +25,20 @@ class WalletForm extends Component {
     dispatch(walletInformation());
   }
 
-  onChange = ({ target }) => {
-    this.setState({
-      [target.name]: target.value,
-    });
+  onChangeInputs = ({ target }) => {
+    this.setState({ [target.name]: [target.value] });
+  };
+
+  onChangeCoin = (value) => {
+    this.setState({ currency: value });
+  };
+
+  onChangeMethod = (value) => {
+    this.setState({ method: value });
+  };
+
+  onChangeTag = (value) => {
+    this.setState({ tag: value });
   };
 
   addValores = async () => {
@@ -45,62 +56,50 @@ class WalletForm extends Component {
     const { currencies } = this.props;
     return (
       <>
-        <label>
-          Valor da despesa:
-          <input
-            name="value"
-            value={ value }
-            type="text"
-            data-testid="value-input"
-            onChange={ this.onChange }
+        <Input
+          name="value"
+          value={ value }
+          type="text"
+          placeholder="Valor da despensa:"
+          data-testid="value-input"
+          onChange={ (e, a) => this.onChangeInputs(e, a) }
+          maw={ 400 }
+        />
+        <Input
+          name="description"
+          value={ description }
+          placeholder="Descrição da despesa:"
+          type="text"
+          data-testid="description-input"
+          onChange={ this.onChangeInputs }
+          maw={ 400 }
+        />
+        <Flex maw={ 400 }>
+          <Select
+            name="currency"
+            value={ currency }
+            data-testid="currency-input"
+            onChange={ this.onChangeCoin }
+            data={ currencies.map((param) => param) }
           />
-        </label>
-        <br />
-        <label>
-          Descrição da despesa:
-          <input
-            name="description"
-            value={ description }
-            type="text"
-            data-testid="description-input"
-            onChange={ this.onChange }
+          <Select
+            name="method"
+            value={ method }
+            data-testid="method-input"
+            onChange={ this.onChangeMethod }
+            data={ ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'] }
           />
-        </label>
-        <br />
-        <select
-          name="currency"
-          value={ currency }
-          data-testid="currency-input"
-          onChange={ this.onChange }
-        >
-          {currencies.map((param, index) => (
-            <option key={ index }>{ param }</option>
-          ))}
-        </select>
-        <select
-          name="method"
-          value={ method }
-          data-testid="method-input"
-          onChange={ this.onChange }
-        >
-          <option>Dinheiro</option>
-          <option>Cartão de crédito</option>
-          <option>Cartão de débito</option>
-        </select>
-        <select
-          name="tag"
-          value={ tag }
-          data-testid="tag-input"
-          onChange={ this.onChange }
-        >
-          <option>Alimentação</option>
-          <option>Lazer</option>
-          <option>Trabalho</option>
-          <option>Transporte</option>
-          <option>Saúde</option>
-        </select>
-        <br />
-        <button onClick={ this.addValores }>Adicionar despesa</button>
+          <Select
+            name="tag"
+            value={ tag }
+            data-testid="tag-input"
+            onChange={ this.onChangeTag }
+            data={ ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'] }
+          />
+        </Flex>
+        <Stack maw={ 400 }>
+          <Button onClick={ this.addValores }>Adicionar despesa</Button>
+        </Stack>
       </>
     );
   }
