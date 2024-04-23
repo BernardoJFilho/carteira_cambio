@@ -1,8 +1,8 @@
 {
   "name": "sd-0x-project-trybewallet",
   "version": "1.0.0",
-  "private": false,
   "homepage": "https://bernardojfilho.github.io/carteira_cambio",
+  "private": false,
   "engines": {
     "node": "16 || 18"
   },
