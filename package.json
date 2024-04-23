@@ -1,7 +1,8 @@
 {
   "name": "sd-0x-project-trybewallet",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://bernardojfilho.github.io/carteira_cambio",
   "engines": {
     "node": "16 || 18"
   },
@@ -61,14 +62,14 @@
     "@trybe/eslint-config-frontend": "^1.7.1",
     "cypress": "10.11.0",
     "cypress-multi-reporters": "1.6.2",
+    "gh-pages": "^6.1.1",
     "jest-localstorage-mock": "2.4.26",
     "mocha": "10.2.0",
     "mochawesome": "7.1.3",
     "mochawesome-merge": "4.2.2",
     "mochawesome-report-generator": "6.2.0",
     "stylelint": "14.16.1",
-    "stylelint-config-standard": "26.0.0",
-    "gh-pages": "6.1.1"
+    "stylelint-config-standard": "26.0.0"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
