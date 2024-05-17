@@ -48,7 +48,7 @@ class Login extends React.Component {
       <Stack
         align="center"
         justify="center"
-        style={ { height: '100vh', backgroundColor: 'lightblue' } }
+        style={ { height: '100vh' } }
       >
         <Stack
           justify="center"
@@ -89,13 +89,9 @@ class Login extends React.Component {
             onVisibilityChange={ toggle }
           />
           <Button
-            // style={ {
-            //   backgroundColor: 'blue',
-            //   color: 'green',
-            // } }
-            // variant="light"
             size="lg"
-            color="cyan"
+            uppercase
+            color="indigo"
             disabled={ buttonDisable }
             onClick={ this.buttonClick }
           >

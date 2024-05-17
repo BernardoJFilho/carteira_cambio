@@ -100,8 +100,15 @@ class WalletForm extends Component {
             data={ ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'] }
           />
         </Flex>
-        <Stack maw={ 400 }>
-          <Button onClick={ this.addValores }>Adicionar despesa</Button>
+        <Stack maw={ 500 }>
+          <Button
+            color="cyan"
+            size="lg"
+            uppercase
+            onClick={ this.addValores }
+          >
+            Adicionar despesa
+          </Button>
         </Stack>
       </>
     );
