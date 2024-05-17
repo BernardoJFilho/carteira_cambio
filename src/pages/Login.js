@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { PasswordInput, Stack, TextInput, Button } from '@mantine/core';
+import { PasswordInput, Stack, TextInput, Button, Title } from '@mantine/core';
 import { submitLoginForm } from '../redux/actions';
 
 class Login extends React.Component {
@@ -12,18 +12,25 @@ class Login extends React.Component {
     toggle: false,
   };
 
+  validarEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
   stateButton = ({ target }) => {
-    const { email } = this.state;
-    const emailValidation = email.includes('@email.com');
-    const minCaracter = 6;
+    const { email, valorPassword } = this.state;
+    const { value } = target;
+    const minSenha = 6;
+    const sliceNumber = -1;
     this.setState({
       buttonDisable: true,
-      [target.name]: target.value,
+      [target.name]: value,
     });
-    if (target.value.length >= minCaracter && emailValidation) {
+    if (value.length >= minSenha && this.validarEmail(email)
+      && value.slice(0, sliceNumber) === valorPassword) {
       this.setState({
         buttonDisable: false,
-        [target.name]: target.value,
+        [target.name]: value,
       });
     }
   };
@@ -38,41 +45,45 @@ class Login extends React.Component {
   render() {
     const { email, buttonDisable, valorPassword, toggle } = this.state;
     return (
-      <Stack
-        justify="center"
-        spacing="0"
-        h={ 800 }
-        maw={ 400 }
-        mx="auto"
-        color="#1F2041"
-      >
-        <TextInput
-          name="email"
-          label="Email"
-          value={ email }
-          type="text"
-          data-testid="email-input"
-          placeholder="@email.com"
-          onChange={ this.stateButton }
-        />
-        <br />
-        <PasswordInput
-          label="Password"
-          name="valorPassword"
-          placeholder="password"
-          value={ valorPassword }
-          data-testid="password-input"
-          onChange={ this.stateButton }
-          onVisibilityChange={ toggle }
-        />
-        <br />
-        <Button
-          variant="light"
-          disabled={ buttonDisable }
-          onClick={ this.buttonClick }
+      <Stack align="center" justify="center" style={ { height: '100vh' } }>
+        <Stack
+          justify="center"
+          spacing="0"
+          h={ 200 }
+          w={ 500 }
+          maw={ 400 }
+          mx="auto"
+          style={ {
+            border: '2px solid blue',
+            borderRadius: '10px',
+          } }
         >
-          Entrar
-        </Button>
+          <Title order={ 3 } align="center">TrybeWallet</Title>
+          <TextInput
+            name="email"
+            value={ email }
+            type="text"
+            data-testid="email-input"
+            placeholder="@email.com"
+            onChange={ this.stateButton }
+          />
+          <PasswordInput
+            name="valorPassword"
+            placeholder="password"
+            value={ valorPassword }
+            data-testid="password-input"
+            onChange={ this.stateButton }
+            onVisibilityChange={ toggle }
+          />
+          <Button
+            // variant="light"
+            color="cyan"
+            disabled={ buttonDisable }
+            onClick={ this.buttonClick }
+          >
+            Entrar
+          </Button>
+        </Stack>
       </Stack>
     );
   }
