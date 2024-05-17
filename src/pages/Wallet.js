@@ -9,7 +9,7 @@ class Wallet extends React.Component {
     return (
       <>
         <Center maw="50%" mx="auto">
-          <Title order={ 3 }>TrybeWallet</Title>
+          <Title order={ 1 } style={ { fontFamily: 'Fira-code' } }>Carteira</Title>
         </Center>
         <Header />
         <WalletForm />

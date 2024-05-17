@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Center, Flex, Title } from '@mantine/core';
+import { Center, Flex, Space, Title } from '@mantine/core';
 
 class Header extends Component {
   calcularValor = () => {
     const { expenses } = this.props;
-    const allNumbers = [0];
     let total = 0;
-    expenses.map(({ currency, value, exchangeRates }) => (
-      allNumbers.push(value * exchangeRates[currency].ask)
-    ));
-    // allNumbers.map((param) => total += param); funciona mais da erro
-    for (let i = 0; i < allNumbers.length; i += 1) {
-      total += allNumbers[i];
-    }
+    expenses.forEach(({ currency, value, exchangeRates }) => {
+      total += value * exchangeRates[currency].ask;
+    });
     return total.toFixed(2);
   };
 
@@ -23,9 +18,17 @@ class Header extends Component {
     return (
       <Center>
         <Flex justify="space-between" w="100%">
-          <Title data-testid="email-field">{ email }</Title>
+          <Title
+            style={ { fontFamily: 'Fira-code' } }
+            data-testid="email-field"
+          >
+            { email }
+          </Title>
           <Flex>
             <Title data-testid="total-field">{ this.calcularValor() }</Title>
+            <Space w="xs" />
+            {/* <NumberFormatter prefix="$ " value={ 1000000 } thousandSeparator /> */}
+            <Space w="xs" />
             <Title data-testid="header-currency-field">BRL</Title>
           </Flex>
         </Flex>

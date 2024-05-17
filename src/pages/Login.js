@@ -45,29 +45,43 @@ class Login extends React.Component {
   render() {
     const { email, buttonDisable, valorPassword, toggle } = this.state;
     return (
-      <Stack align="center" justify="center" style={ { height: '100vh' } }>
+      <Stack
+        align="center"
+        justify="center"
+        style={ { height: '100vh', backgroundColor: 'lightblue' } }
+      >
         <Stack
           justify="center"
           spacing="0"
-          h={ 200 }
-          w={ 500 }
-          maw={ 400 }
+          h={ 400 }
+          w={ 700 }
+          maw={ 2000 }
           mx="auto"
           style={ {
-            border: '2px solid blue',
+            backgroundColor: 'dark',
+            // border: '2px solid blue',
             borderRadius: '10px',
+            height: '100vh',
           } }
         >
-          <Title order={ 3 } align="center">TrybeWallet</Title>
+          <Title
+            order={ 1 }
+            align="center"
+            style={ { fontFamily: 'Fira-code' } }
+          >
+            Bem Vindo a Sua Carteira
+          </Title>
           <TextInput
             name="email"
             value={ email }
+            size="lg"
             type="text"
             data-testid="email-input"
             placeholder="@email.com"
             onChange={ this.stateButton }
           />
           <PasswordInput
+            size="lg"
             name="valorPassword"
             placeholder="password"
             value={ valorPassword }
@@ -76,7 +90,12 @@ class Login extends React.Component {
             onVisibilityChange={ toggle }
           />
           <Button
+            // style={ {
+            //   backgroundColor: 'blue',
+            //   color: 'green',
+            // } }
             // variant="light"
+            size="lg"
             color="cyan"
             disabled={ buttonDisable }
             onClick={ this.buttonClick }
