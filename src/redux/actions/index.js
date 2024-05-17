@@ -1,6 +1,5 @@
 import getApi from '../api/api';
 
-// Coloque aqui suas actions
 const LOGIN_FORM_SUBMIT = 'LOGIN_FORM_SUBMIT';
 const INFORMATION_WALLET = 'INFORMATION_WALLET';
 const VALUES_WALLET = 'VALUES_WALLET';

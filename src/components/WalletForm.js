@@ -25,6 +25,7 @@ class WalletForm extends Component {
     dispatch(walletInformation());
   }
 
+  // Isso é preciso por causa do mantine
   onChangeInputs = ({ target }) => {
     this.setState({ [target.name]: [target.value] });
   };
@@ -63,7 +64,8 @@ class WalletForm extends Component {
           placeholder="Valor da despensa:"
           data-testid="value-input"
           onChange={ (e, a) => this.onChangeInputs(e, a) }
-          maw={ 400 }
+          maw={ 500 }
+          size="lg"
         />
         <Input
           name="description"
@@ -72,9 +74,10 @@ class WalletForm extends Component {
           type="text"
           data-testid="description-input"
           onChange={ this.onChangeInputs }
-          maw={ 400 }
+          maw={ 500 }
+          size="lg"
         />
-        <Flex maw={ 400 }>
+        <Flex maw={ 500 } size="lg">
           <Select
             name="currency"
             value={ currency }

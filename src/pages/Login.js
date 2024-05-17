@@ -59,7 +59,6 @@ class Login extends React.Component {
           mx="auto"
           style={ {
             backgroundColor: 'dark',
-            // border: '2px solid blue',
             borderRadius: '10px',
             height: '100vh',
           } }

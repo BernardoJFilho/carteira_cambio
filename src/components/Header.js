@@ -19,17 +19,26 @@ class Header extends Component {
       <Center>
         <Flex justify="space-between" w="100%">
           <Title
+            order={ 3 }
             style={ { fontFamily: 'Fira-code' } }
             data-testid="email-field"
           >
             { email }
           </Title>
           <Flex>
-            <Title data-testid="total-field">{ this.calcularValor() }</Title>
+            <Title
+              style={ { fontFamily: 'Fira-code' } }
+              data-testid="total-field"
+            >
+              { this.calcularValor() }
+            </Title>
             <Space w="xs" />
-            {/* <NumberFormatter prefix="$ " value={ 1000000 } thousandSeparator /> */}
-            <Space w="xs" />
-            <Title data-testid="header-currency-field">BRL</Title>
+            <Title
+              style={ { fontFamily: 'Fira-code' } }
+              data-testid="header-currency-field"
+            >
+              BRL
+            </Title>
           </Flex>
         </Flex>
       </Center>
